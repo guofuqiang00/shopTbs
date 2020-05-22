@@ -11,48 +11,31 @@
 </head>
 <script type="text/javascript" src="${basePath}/dist/js/jquery.min.js"></script>
 <body>
-<form class="layui-form">
-    <button class="layui-btn" onclick="show(this)"></button>
-</form>
+        <button class="layui-btn" onclick="select()">select</button>
 </body>
 <style>
-    .layui-layer-btn{
-        text-align: center;
-
-    }
 </style>
 <script>
-    $(function () {
-        $(".layui-form").closest(".layui-form-item").css({"color":"red","border":"2px solid red"});
-    })
 
     function show(btn) {
-
+       console.info("sdsads")
     }
-
-    layui.use(['form','layer','laydate','laytpl'],function () {
-        var laydate = layui.laydate;
-        var laytpl = layui.laytpl;
-        var form = layui.form;
-        var layer = layui.layer;
-
-
-        layer.confirm('is not?', {icon: 3, btn:['<div id="btn" class="layui-layer-btn btn" style="width: 220px;" >确定</div>']},
-            function(index){
-            console.info("true")
-          },function (index) {
-                console.info("false")
+    let  map = {
+        "id": 7888888,
+        "username":"sadsad",
+        "password":"777887444"
+    }
+    function select(){
+        $.ajax({
+            url:'http://localhost:8080/com/selectCommon',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify(map),
+            success:function (data) {
+                console.info(data)
             }
-
-        );
-
-
-
-    })
-
-  
-
-
+        })
+    }
 
 </script>
 </html>
