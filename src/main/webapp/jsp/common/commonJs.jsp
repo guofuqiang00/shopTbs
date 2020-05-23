@@ -5,7 +5,6 @@
 <%--
 <script type="text/javascript" src="${basePath}/dist/js/jquery.min.js"></script>
 --%>
-<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="${basePath}/dist/layui/layui.js"></script>
 <link rel="stylesheet" href="${basePath}/dist/layui/css/layui.css"/>
 <%-- layui图片压缩插件 layui/modules/upload.js --%>
