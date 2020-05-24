@@ -1,32 +1,21 @@
 package com.tbs.entity;
 
-public class User {
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
+import java.util.Date;
+
+@Data
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int id;
     private String username;
-    private String userpassword;
+    private String password;
+    private Date createTime;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUserpassword() {
-        return userpassword;
-    }
-
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
-    }
 }

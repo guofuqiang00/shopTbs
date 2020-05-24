@@ -2,9 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 
-<%--
 <script type="text/javascript" src="${basePath}/dist/js/jquery.min.js"></script>
---%>
 <script type="text/javascript" src="${basePath}/dist/layui/layui.js"></script>
 <link rel="stylesheet" href="${basePath}/dist/layui/css/layui.css"/>
 <%-- layui图片压缩插件 layui/modules/upload.js --%>
