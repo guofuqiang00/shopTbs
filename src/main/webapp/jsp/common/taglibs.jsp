@@ -9,8 +9,8 @@
 
 %>
 <script type="text/javascript">
-    window.ctx='${ctx}';
-    var pathName=window.document.location.pathname;
-    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+    <%--window.ctx='${ctx}';--%>
+    <%--var pathName=window.document.location.pathname;--%>
+    <%--var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);--%>
 
 </script>

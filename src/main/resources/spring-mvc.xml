@@ -50,8 +50,8 @@
 
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
-    <mvc:resources location="/" mapping="/webapp/*.*"/>
-    <mvc:view-controller path="/jsp" view-name="*"/>
+<!--    <mvc:resources location="/" mapping="/webapp/*.*"/>-->
+<!--    <mvc:view-controller path="/jsp" view-name="*"/>-->
 
     <!-- 视图解析器 -->
 <!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->

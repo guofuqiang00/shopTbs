@@ -9,19 +9,30 @@
     <link rel="stylesheet" href="${basePath}/dist/layui/css/layui.css" media="all">
     <title>Title</title>
 </head>
+<style>
+  .inputWidth{
+      width: 220px;
+  }
+</style>
 <body>
 <form class="layui-form" action="" id="formTest">
     <div style="margin-top: 20px;"></div>
     <div class="layui-form-item">
         <label class="layui-form-label">用户名:</label>
         <div class="layui-input-block">
-            <input type="text" id="username" name="username" class="layui-input"/>
+            <input type="text" id="username" name="username" class="layui-input inputWidth"/>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">密码:</label>
         <div class="layui-input-block">
-            <input type="text" id="password" name="password" class="layui-input"/>
+            <input type="text" id="password" name="password" class="layui-input inputWidth"/>
+        </div>
+    </div>
+    <div class="layui-inline">
+        <label class="layui-form-label">创建时间:</label>
+        <div class="layui-input-inline">
+            <input type="text" id="createTime" class="layui-input" name="createTime"/>
         </div>
     </div>
     <div class="layui-form-item" style="margin-right: 60px;margin-top: 40px;">
@@ -37,19 +48,45 @@
 
     $(document).ready(function () {
 
-        layui.use(['layer','form'],function () {
-
+        layui.use(['layer','form','laydate'],function () {
 
             var layer  = layui.layer,
                 form = layui.form,
                 $ = layui.jquery;
 
+            laydate = layui.laydate
+            laydate.render({
+                elem: "#createTime",
+                type: 'datetime',
+                min: new Date().getTime()
+            })
 
             form.on("submit(submitForm)",function (data) {
                 var data = data.field;
-                console.info('data---->',data)
-            })
+                data.id = 1111111;
+                /*data.createTime = '2020-05-25 00:00:00'
+                var that = this;*/
+                $.ajax({
+                    url:ctx+'user/insertUser',
+                    type:'post',
+                    data:JSON.stringify(data),
+                    contentType:'application/json',
+                    success:function (data) {
+                       console.info("resukt----->",data)
+                        if(data.code==0){
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            window.parent.layui.table.reload('jobList')
+                            window.top.layer.msg("添加成功!")
+                        }else{
+                            layer.msg(data.msg,{icon:5,offset: '50px'});
+                            $(that).removeClass("layui-btn")
+                        }
+                    }
 
+                })
+
+            })
 
         })
     })
