@@ -3,8 +3,11 @@ package com.tbs.controller.user;
 
 import com.tbs.dao.user.UserDao;
 import com.tbs.entity.User;
+import com.tbs.utils.R;
+import com.tbs.utils.UIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserDao userDao;
@@ -27,23 +32,20 @@ public class UserController {
 
     @RequestMapping(value = "/selectUser",method = RequestMethod.GET)
     @ResponseBody
-    public List<User> selectUser(ModelAndView model){
-        List<User> list = new ArrayList<User>();
-        User user = userDao.selectUser();
-        list.add(user);
-        return list;
+    public R selectUser(){
+        List<User> users = userDao.selectUser();
+        return R.ok().put("data",users);
     }
 
-    @RequestMapping(value = "/aa",method = RequestMethod.GET)
+    @RequestMapping("/insertUser")
     @ResponseBody
-    public String aa(){
-        List<User> list = new ArrayList<User>();
-        User user = userDao.selectUser();
-        System.out.println(user.getUsername());
-        System.out.println(user.getUserpassword());
-        list.add(user);
-        return "list";
+    public R insertUser(@RequestBody User user){
+        user.setId(Long.hashCode(UIDUtil.nextId()));
+        int num = userDao.insertUser(user);
+        return R.ok().put("num",num);
     }
+
+
 
 
 }
