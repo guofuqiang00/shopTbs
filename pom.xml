@@ -167,14 +167,6 @@
     <!--      <optional>true</optional>-->
     <!--    </dependency>-->
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-    <!--lombok-->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.8</version>
-      <scope>provided</scope>
-    </dependency>
-
     <!--fasthson-->
     <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
     <dependency>
