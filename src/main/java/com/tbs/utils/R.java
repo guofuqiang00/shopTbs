@@ -80,18 +80,5 @@ public class R extends HashMap<String, Object> {
         r.putAll(map);
         return r;
     }
-    /**
-     *通过pageHelper分页
-     * @param list
-     * @return
-     */
-    public static R okPage(List<?> list) {
-        R r = new R();
-        Page<?> page=(Page)list;
-        //r.put("count",Integer.valueOf(page.getTotalPage()+""));
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("data",list);
-        r.putAll(map);
-        return r;
-    }
+
 }

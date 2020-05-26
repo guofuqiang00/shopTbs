@@ -8,31 +8,50 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 扫描注解，这样com.tbs包下的文件都能被扫描 -->
     <context:component-scan base-package="com.tbs.controller"/>
 
-    <bean   class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-
-        <property name="messageConverters">
-
-            <list>
-
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-
-            </list>
-
-        </property>
-
-    </bean>
     <!-- 开启SpringMVC注解模式 -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <!-- 处理responseBody 里面日期类型 -->
+        <mvc:message-converters>
+            <!--处理null问题-->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.tbs.config.JsonObjectMapper"></bean>
+                </property>
+                <!--                <property name="objectMapper">-->
+                <!--                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">-->
+                <!--                       <property name="dateFormat">-->
+                <!--                           <bean class="java.text.SimpleDateFormat">-->
+                <!--                               <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />-->
+                <!--                           </bean>-->
+                <!--                       </property>-->
+                <!--                    </bean>-->
+                <!--                </property>-->
+            </bean>
+
+            <!-- 处理请求返回json字符串的中文乱码问题 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>*/*;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+
+    </mvc:annotation-driven>
+
 
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
+<!--    <mvc:resources location="/" mapping="/webapp/*.*"/>-->
+<!--    <mvc:view-controller path="/jsp" view-name="*"/>-->
 
     <!-- 视图解析器 -->
 <!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
@@ -42,7 +61,6 @@
 
     <!-- 配置返回视图的路径，以及识别后缀是jsp文件 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
