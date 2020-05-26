@@ -80,6 +80,8 @@
 
                 })
 
+                return false
+
             })
 
         })
