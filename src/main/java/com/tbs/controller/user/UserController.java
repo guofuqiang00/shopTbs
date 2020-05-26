@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
@@ -40,12 +37,15 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-   public R insertUser(@RequestBody User user){
+   public Map<String,Object> insertUser(User user){
+        System.out.println(user);
         User user1 = new User();
         user1.setUsername("admin");
         user1.setPassword("admin");
-        int num = userDao.insertUser(user1);
-        return R.ok();
+        int num = userDao.insertUser(user);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        return map;
     }
 
 

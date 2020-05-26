@@ -3,9 +3,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="${basePath}/dist/layui/css/layui.css" media="all">
     <title>Title</title>
 </head>
@@ -52,7 +51,6 @@
 
             var layer  = layui.layer,
                 form = layui.form,
-                $ = layui.jquery;
 
             laydate = layui.laydate
             laydate.render({
@@ -62,21 +60,18 @@
             })
 
             form.on("submit(submitForm)",function (data) {
-                var data = data.field;
-                /*data.createTime = '2020-05-25 00:00:00'
-                var that = this;*/
+                /*data.createTime = '2020-05-25 00:00:00'*/
+                var that = this;
                 $.ajax({
-                    url:ctx+'user/insertUser',
+                    url:"http://localhost:8080/user/insertUser",
                     type:'post',
-                    contentType:'application/json',
-                    data:JSON.stringify(data),
+                    dataType:"json",
+                    data:JSON.stringify(data.field),
                     success:function (data) {
                        console.info("resukt----->",data)
                         if(data.code==0){
-                            var index = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(index);
-                            window.parent.layui.table.reload('jobList')
-                            window.top.layer.msg("添加成功!")
+                            console.info(data)
+
                         }else{
                             layer.msg(data.msg,{icon:5,offset: '50px'});
                             $(that).removeClass("layui-btn")

@@ -10,6 +10,6 @@ public interface UserDao {
 
    List<User>  selectUser();
 
-   int insertUser(@Param("user") User user);
+   int insertUser(User user);
 
 }
