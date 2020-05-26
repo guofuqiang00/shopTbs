@@ -29,12 +29,12 @@
             <input type="text" id="password" name="password" class="layui-input inputWidth"/>
         </div>
     </div>
-    <div class="layui-inline">
-        <label class="layui-form-label">创建时间:</label>
-        <div class="layui-input-inline">
-            <input type="text" id="createTime" class="layui-input" name="createTime"/>
-        </div>
-    </div>
+<%--    <div class="layui-inline">--%>
+<%--        <label class="layui-form-label">创建时间:</label>--%>
+<%--        <div class="layui-input-inline">--%>
+<%--            <input type="text" id="createTime" class="layui-input" name="createTime"/>--%>
+<%--        </div>--%>
+<%--    </div>--%>
     <div class="layui-form-item" style="margin-right: 60px;margin-top: 40px;">
         <div class="layui-input-block" style="text-align: center;">
             <button style="width: 100px;margin-right: 20px;" class="layui-btn" lay-submit lay-filter="submitForm">确定
@@ -63,14 +63,13 @@
 
             form.on("submit(submitForm)",function (data) {
                 var data = data.field;
-                data.id = 1111111;
                 /*data.createTime = '2020-05-25 00:00:00'
                 var that = this;*/
                 $.ajax({
                     url:ctx+'user/insertUser',
                     type:'post',
-                    data:JSON.stringify(data),
                     contentType:'application/json',
+                    data:JSON.stringify(data),
                     success:function (data) {
                        console.info("resukt----->",data)
                         if(data.code==0){

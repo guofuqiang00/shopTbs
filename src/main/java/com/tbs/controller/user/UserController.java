@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,13 +40,13 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     @ResponseBody
-    public R insertUser(@RequestBody User user){
-        user.setId(Long.hashCode(UIDUtil.nextId()));
-        int num = userDao.insertUser(user);
-        return R.ok().put("num",num);
+   public R insertUser(@RequestBody User user){
+        User user1 = new User();
+        user1.setUsername("admin");
+        user1.setPassword("admin");
+        int num = userDao.insertUser(user1);
+        return R.ok();
     }
-
-
 
 
 }

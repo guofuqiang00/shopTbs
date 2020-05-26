@@ -7,7 +7,7 @@
         <!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
         <setting name="useGeneratedKeys" value="true" />
 
-        <setting name="logImpl" value="LOG4J" />
+<!--        <setting name="logImpl" value="LOG4J" />-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 </configuration>
