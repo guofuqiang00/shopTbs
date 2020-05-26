@@ -6,10 +6,14 @@
     <select id="selectUser" resultType="com.tbs.entity.User" >
         select * from user
     </select>
-    <insert id="insertUser">
-        insert into user(id,username,password,create_time)values(
-        #{id},#{username},#{password},#{createTime}
+    <insert id="insertUser" parameterType="com.tbs.entity.User">
+        insert into user(
+        username,
+        password
+        )values(
+         #{username},
+         #{password}
         )
-    </insert>
+</insert>
 
 </mapper>

@@ -1,6 +1,6 @@
 package com.tbs.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,8 +13,7 @@ public class User implements Serializable {
     private Integer id;
     private String username;
     private String password;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-
-
 
 }
