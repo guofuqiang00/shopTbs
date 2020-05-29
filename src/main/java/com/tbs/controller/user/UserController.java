@@ -7,10 +7,7 @@ import com.tbs.utils.R;
 import com.tbs.utils.UIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
@@ -46,6 +43,51 @@ public class UserController {
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
         return map;
+    }
+
+    @RequestMapping("/selectUserByMap")
+    @ResponseBody
+    public R selectUserByMap(@RequestBody Map<String,Object> params){
+        List<User> users = userDao.selectUserByMap(params);
+        return  R.ok().put("users",users);
+    }
+    
+    @RequestMapping("/selectUserByMap2")
+    @ResponseBody
+    public R selectUserByMap2(@RequestBody Map<String,Object> params){
+        List<User> users = userDao.selectUserByMap2(params);
+        return  R.ok().put("users",users);
+    }
+    @RequestMapping("/selectUserByMap3")
+    @ResponseBody
+    public R selectUserByMap3(@RequestBody Map<String,Object> map,@RequestParam("password") String password){
+
+
+        return  R.ok();
+    }
+
+
+    @RequestMapping("/selectUserByUser")
+    @ResponseBody
+    public R selectUserByUser(User user){
+        List<User> users = userDao.selectUserByUser(user);
+        return  R.ok().put("users",users);
+    }
+
+    @RequestMapping("/selectUserByUser2")
+    @ResponseBody
+    public R selectUserByUser2( User user){
+        List<User> users = userDao.selectUserByUser(user);
+        return  R.ok().put("users",users);
+    }
+
+    @RequestMapping("/selectUserByUser4")
+    @ResponseBody
+    public R selectUserByUser4( @RequestBody User user){
+
+
+
+        return  R.ok();
     }
 
 

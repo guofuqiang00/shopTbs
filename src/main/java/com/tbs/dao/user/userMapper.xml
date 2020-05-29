@@ -6,6 +6,20 @@
     <select id="selectUser" resultType="com.tbs.entity.User" >
         select * from user
     </select>
+    <select id="selectUserByMap" parameterType="Map" resultType="com.tbs.entity.User">
+        select * from user where id=#{id} and username=#{username}
+    </select>
+    <select id="selectUserByMap2" parameterType="Map" resultType="com.tbs.entity.User">
+        select * from user where id=#{params.id} and username=#{params.username}
+    </select>
+    <select id="selectUserByUser" parameterType="com.tbs.entity.User" resultType="com.tbs.entity.User">
+        select * from user where id=#{user.id} and username=#{user.username}
+    </select>
+
+
+
+
+
     <insert id="insertUser" parameterType="com.tbs.entity.User">
         insert into user(
         username,

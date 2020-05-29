@@ -28,8 +28,8 @@
               "target": "_self"
             },
             {
-              "title": "主页二",
-              "href": "",
+              "title": "测试",
+              "href": "jsp/common/test.jsp",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
