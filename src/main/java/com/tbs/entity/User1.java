@@ -8,4 +8,6 @@ import java.io.Serializable;
 public class User1 extends User2 implements Serializable {
 
 
+
+
 }
