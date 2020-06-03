@@ -8,4 +8,5 @@ public class LambdaServiceImpl implements LambdaService<User> {
     public boolean show(User user) {
         return user.getUsername().equals("admin");
     }
+
 }

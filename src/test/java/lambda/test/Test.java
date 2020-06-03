@@ -3,6 +3,7 @@ package lambda.test;
 import com.tbs.entity.User;
 import lambda.AbstractClass;
 import lambda.service.LambdaService;
+import lambda.service.LambdaService2;
 import lambda.service.impl.LambdaServiceImpl;
 
 import java.util.ArrayList;
@@ -64,9 +65,11 @@ public class Test {
      /**lambda 过滤*/
     @org.junit.Test
     public void test4(){
+        List<User> list = new ArrayList<>();
         userList.stream()
-                .filter((e)->e.getUsername().equals("qqqwww"))
-                . forEach(System.out::println);
+                .filter((e)->!e.getUsername().equals("qqqwww"))
+                . forEach(e->list.add(e));
+        System.out.println(list);
     }
 
     /**匿名内部类*/
@@ -115,5 +118,25 @@ public class Test {
         };
 
     }
+
+
+    public Long  testLambda(long l1,long l2, LambdaService2<Long,Long> lambdaService2){
+        Long show = lambdaService2.show(l1, l2);
+        return show;
+    }
+
+    @org.junit.Test
+    public void test7() {
+        long x = 10L;
+        long y = 5L;
+
+        Long aLong = testLambda(x, y, (e1, e2) -> x + y);
+        System.out.println(aLong);
+    }
+
+    /**lambda函数接口*/
+
+
+
 
 }
