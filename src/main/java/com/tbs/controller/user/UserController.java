@@ -5,8 +5,10 @@ import com.tbs.dao.user.UserDao;
 import com.tbs.entity.User;
 import com.tbs.utils.R;
 import com.tbs.utils.UIDUtil;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,8 +39,6 @@ public class UserController {
    public Map<String,Object> insertUser(User user){
         System.out.println(user);
         User user1 = new User();
-        user1.setUsername("admin");
-        user1.setPassword("admin");
         int num = userDao.insertUser(user);
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
@@ -88,6 +88,15 @@ public class UserController {
 
 
         return  R.ok();
+    }
+    @RequestMapping("/selectUserByUser5")
+    @ResponseBody
+    public R selectUserByUser5(User user){
+        User user1 = new User();
+        user1.setId(1713030994);
+        user1.setUsername("4444");
+        List<User> users = userDao.selectUserByUser5(user1, 0, 8);
+        return R.ok().put("users",users);
     }
 
 

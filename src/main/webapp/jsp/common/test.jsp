@@ -10,16 +10,54 @@
     <link rel="stylesheet" href="${basePath}/dist/layui/css/layui.css" media="all">
     <title>Title</title>
 </head>
-<body>
+<body id="body">
     <button class="layui-btn" onclick="get1()">传一个map</button>
     <button class="layui-btn" onclick="selectUserByMap2()">selectUserByMap2</button>
     <button class="layui-btn" onclick="selectUserByMap3()">selectUserByMap3</button>
     <button class="layui-btn" onclick="get2()">传一个user</button>
     <button class="layui-btn" onclick="get3()">传一个user2</button>
     <button class="layui-btn" onclick="get4()">get4</button>
+    <input style="width: 150px" value="ccc"   class="aaa"></input>
+    <input style="width: 150px" value=""  class="aaa"></input>
+    <input style="width: 150px"  value=""  class="aaa"></input>
+    <input style="width: 150px"  value=""  class="aaa"></input>
+    <input style="width: 150px"  value=""  class="aaa"></input>
 </body>
 <script type="text/html" id="rank">    {{d.LAY_TABLE_INDEX+1}}</script>
 <script>
+
+    var elementsByClassName = document.getElementsByClassName("aaa");
+    console.info("elementsByClassName-->>",elementsByClassName)
+   console.info( elementsByClassName[0])
+
+    $(".aaa").each(function (data) {
+        document.getElementsByClassName("aaa")[data].value = data;
+    })
+
+
+
+
+    layui.use(['colorpicker','layer'], function(){
+        var layer = layui.layer;
+        var $ = layui.$,colorpicker = layui.colorpicker;
+        //常规使用
+        var html = 'div id="test11" class="test11" style="margin-left: 30px;">\n' +
+            '\n' +
+            '    </div>';
+
+        $("#colors").after(html)
+
+        colorpicker.render({
+            elem: '.test11' //绑定元素
+            ,change: function(color){ //颜色改变的回调
+                layer.tips('选择了：'+ color, this.elem, {
+                    tips: 1
+                });
+            }
+        });
+
+
+    })
 
 
 function get1() {

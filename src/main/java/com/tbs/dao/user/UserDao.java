@@ -19,4 +19,6 @@ public interface UserDao {
 
    List<User> selectUserByUser(@Param("user") User user);
 
+   List<User>  selectUserByUser5(@Param("user") User user,@Param("pageStart")Integer pageStart,@Param("pageSize")Integer pageSize);
+
 }
