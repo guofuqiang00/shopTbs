@@ -66,6 +66,41 @@ public class LambdaTest {
         });
         System.out.println(predicate);
 
+        Consumer<Integer> consumer = (x)-> {
+            System.out.println(x);
+        };
+
+
+
+
+
+    }
+
+    @Test
+    public void test2() {
+
+
+        /**无参数有返回值*/
+        Supplier<Integer> supplier = () -> {
+            return 888;
+        };
+        System.out.println(supplier.get());
+
+
+        Consumer<String> consumer = (x) -> System.out.println("x = " + x);
+        consumer.accept("adbc");
+
+        Function<Integer, Integer> function = (x) -> x<5?8:9;
+        System.out.println(function.apply(5));
+
+        Predicate<String> predicate = (x)->x.equals("admin");
+        System.out.println(predicate.test("1234565"));
+
+        BiFunction<Integer,Integer,Boolean> biFunction = (x,y)->x==y;
+        System.out.println( biFunction.apply(5, 5));
+
+
+
     }
 
 }
