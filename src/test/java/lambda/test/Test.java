@@ -16,9 +16,9 @@ public class Test {
 
 
     List<User> userList = Arrays.asList(
-            new User(1001,"admin","password"),
-            new User(1002,"123456","123456"),
-            new User(1003,"qqqwww","qqqwww")
+            new User(1001,"admin","password",35),
+            new User(1002,"123456","123456",35),
+            new User(1003,"qqqwww","qqqwww",35)
     );
 
 
