@@ -63,7 +63,7 @@
                 /*data.createTime = '2020-05-25 00:00:00'*/
                 var that = this;
                 $.ajax({
-                    url:"http://localhost:8080/user/insertUser",
+                    url:ctx+"/user/insertUser",
                     type:'post',
                     dataType:"json",
                     data:JSON.stringify(data.field),

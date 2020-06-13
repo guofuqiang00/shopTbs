@@ -57,7 +57,7 @@
             })
             table.render({
                 elem: '#jobList'
-                , url: 'http://localhost:8080/user/selectUser'
+                , url: ctx+'/user/selectUser'
                 , method: 'get'
                 , id: 'jobList'
                 , title: ''

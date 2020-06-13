@@ -6,7 +6,8 @@
 <script type="text/javascript" src="${basePath}/dist/layui/layui.js"></script>
 <link rel="stylesheet" href="${basePath}/dist/layui/css/layui.css"/>
 <script>
-    ctx = 'http://localhost:8080/'
+    // ctx = 'http://localhost:8080/'
+    ctx = 'http://192.168.2.122:8686'
 </script>
 
 <%-- layui图片压缩插件 layui/modules/upload.js --%>
